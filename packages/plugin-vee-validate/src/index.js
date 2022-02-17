@@ -177,7 +177,7 @@ function withField (el) {
       // ex: user.name
       const name = path ? `${path}.${attrs.model}` : attrs.model
       const label = computed(() => props.label)
-      const { value, errorMessage, meta, setTouched, errors } = useField(name, validations, {
+      const { value, errorMessage, meta, setTouched, errors, validate, handleChange } = useField(name, validations, {
         initialValue,
         label
       })
@@ -199,7 +199,9 @@ function withField (el) {
             errorMessage: unref(errorMessage),
             errors: unref(errors),
             meta,
-            setTouched
+            setTouched,
+            validate,
+            handleChange
           }, el)
         })
       }
